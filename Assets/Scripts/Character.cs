@@ -14,6 +14,15 @@ public abstract class Character : MonoBehaviour
     protected Animator anim;
     protected Rigidbody2D rb;
 
+    public void Initialize(int startHealth)
+    {
+        Health = startHealth;
+        Debug.Log($"{this.name} is initialed Health : {this.Health}");
+
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+
     public void TakeDamage(int damage)
     {
         Health -= damage;
@@ -26,20 +35,11 @@ public abstract class Character : MonoBehaviour
     {
         if (Health <= 0)
         {
-            Destroy(rb);
+            Destroy(this.gameObject);
             return true;
         }
         else { return false; }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
