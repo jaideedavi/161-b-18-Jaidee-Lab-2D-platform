@@ -15,10 +15,10 @@ public class Crocodile : Enemy
         player = GameObject.FindFirstObjectByType<Player>();
     }
 
-    // private void FixedUpdate()
-    // {
-    //     Behavior();
-    // }
+    private void Update()
+    {
+     Behavior();
+    }
 
     public override void Behavior()
     {

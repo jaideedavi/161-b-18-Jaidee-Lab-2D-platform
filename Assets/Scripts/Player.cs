@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class Player : Character
@@ -10,7 +11,16 @@ public class Player : Character
 
     public void OnHitWith(Enemy enemy)
     {
-        
+        TakeDamage(enemy.damageHit);
+    }
+    
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+        if(enemy != null)
+        {
+            OnHitWith(enemy);
+        }
     }
 
    
